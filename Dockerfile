@@ -36,5 +36,4 @@ CMD ["streamlit", "run", "streamlit_mainpage.py", "--server.port=8503", "--serve
 # docker build --build-arg git_token=your_git_token --build-arg CACHEBUST=$(date +%s) --build-arg BRANCH=main --build-arg OWNER=vutuong -t your_image_name .
 
 # or
-
 # docker build --build-arg git_token=your_git_token --build-arg BRANCH=main --no-cache -t your_image_name .
