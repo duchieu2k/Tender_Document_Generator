@@ -1,0 +1,15 @@
+services:
+  tender-docxtemplate-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        git_token: "${{ secrets.GITHUB_TOKEN }}"
+        CACHEBUST: "${CACHEBUST}"
+        BRANCH: "main"
+        OWNER: "${{ github.repository_owner }}"
+    image: tender-docxtemplate-app:latest
+    container_name: tender-docxtemplate-app
+    ports:
+      - "8503:8503"
+    restart: always
