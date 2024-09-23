@@ -70,6 +70,9 @@ jobs:
       run: |
         echo "The JOB_No is ${{ github.run_number }}"
         echo "GitHub Actions is not allowed to push commits to the repo, so we can't do it here now."
+        echo "repo_owner is ${{ github.repository_owner }}"
+        echo "env_repo is ${{ env.REPO }}"
+        echo "git_token is ${{ secrets.GITHUB_TOKEN }}"
         # Nextstep to push
         # git config --global user.name "svtechnmaa"
         # git config --global user.email "nmaa@svtech.com.vn"
