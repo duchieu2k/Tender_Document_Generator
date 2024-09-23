@@ -4,10 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        git_token: "${{ secrets.GITHUB_TOKEN }}"
+        git_token: "${GIT_TOKEN}" 
         CACHEBUST: "${CACHEBUST}"
         BRANCH: "main"
-        OWNER: "${{ github.repository_owner }}"
+        OWNER: "${OWNER}"
     image: tender-docxtemplate-app:latest
     container_name: tender-docxtemplate-app
     ports:
