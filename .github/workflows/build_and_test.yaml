@@ -26,9 +26,13 @@ jobs:
         key: ${{ runner.os }}-buildx-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-buildx-
+    - name: Setup docker-compose
+      uses: hoverkraft-tech/compose-action@v2.0.1
+      
     - name: Build and run image
-      run: docker-compose up --build
-        # sleep 10  # Give the container some time to start
+      run: |
+        docker-compose up --build
+        sleep 10  # Give the container some time to start
     - name: Check container status
       run: docker inspect tender-docxtemplate-app
 
