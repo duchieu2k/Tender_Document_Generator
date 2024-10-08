@@ -5,7 +5,7 @@ services:
     build:
       context: ./
       args:
-        GIT_TOKEN: secrets.GITHUB_TOKEN
+        git_token: secrets.GITHUB_TOKEN
         CACHEBUST: (date +%s)
         BRANCH: main
         OWNER: github.repository_owner
