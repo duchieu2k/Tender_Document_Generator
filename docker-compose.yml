@@ -1,16 +1,8 @@
 version: '3'
 services:
   tender-docxtemplate:
-    image: tender_document
-    build:
-      context: ./
-      args:
-        git_token: secrets.GITHUB_TOKEN
-        CACHEBUST: (date +%s)
-        BRANCH: main
-        OWNER: github.repository_owner
-      dockerfile: Dockerfile
     container_name: tender-docxtemplate-app
+    image: ghcr.io/kiennkt/kiennkt/tender_document_generator:latest
     ports:
       - 8503:8503
     restart: always
