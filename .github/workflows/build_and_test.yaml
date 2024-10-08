@@ -47,6 +47,7 @@ jobs:
         unzip chromedriver-linux64.zip
         sudo cp chromedriver-linux64/chromedriver /usr/local/bin/
         robot tests/
+        
     - name: Stop and remove container
       if: always()
       run: docker rm -f tender-docxtemplate-app
