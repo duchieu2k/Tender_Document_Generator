@@ -74,14 +74,4 @@ jobs:
         echo "repo_owner is ${{ github.repository_owner }}"
         echo "env_repo is ${{ env.REPO }}"
         echo "git_token is ${{ secrets.GITHUB_TOKEN }}"
-        # Nextstep to push
-        # git config --global user.name "svtechnmaa"
-        # git config --global user.email "nmaa@svtech.com.vn"
-        # git clone -b feature/streamlit https://github.com/svtechnmaa/charts.git --depth=1 --single-branch
-        # cd charts/
-        # sed -i '/^  repository: svtechnmaa\/tender_document_generator/{N;s/  tag: .*/  tag: '"v1.${{ github.run_number }}"'/}' kubernetes/docxtemplate/values.yaml
-        # git add .
-        # git commit -m "no-ci: Update docxtemplate image version"
-        # git remote set-url origin https://svtechnmaa:${{ secrets.GITHUB_TOKEN }}@github.com/svtechnmaa/charts.git
-        # git push origin feature/streamlit
     
