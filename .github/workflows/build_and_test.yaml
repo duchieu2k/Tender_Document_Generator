@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
+  pull_request: 
     branches:
       - main
 
@@ -29,11 +29,14 @@ jobs:
     - name: Run docker-compose
       uses: hoverkraft-tech/compose-action@v2.0.1
       with:
-        compose-file: "./docker-compose.yml"
-
-    - name: Run docker-compose
-      run: docker-compose up -d
-
+        compose-file: "../../docker-compose.yml"
+    - name: Build Docker image
+      run: docker build --build-arg git_token=${{ secrets.GITHUB_TOKEN }} --build-arg CACHEBUST=$(date +%s) --build-arg BRANCH=main --build-arg OWNER=${{ github.repository_owner }} -t tender-docxtemplate-app .
+    - name: Run Tender app
+      run: |
+        # docker run -d --name tender-docxtemplate-app -p 8503:8503 hiennnnguyen/docxtemplate:version3
+        docker run -d --name tender-docxtemplate-app -p 8503:8503 tender-docxtemplate-app
+        sleep 10  # Give the container some time to start
     - name: Check container status
       run: docker inspect tender-docxtemplate-app
 
@@ -47,7 +50,6 @@ jobs:
         unzip chromedriver-linux64.zip
         sudo cp chromedriver-linux64/chromedriver /usr/local/bin/
         robot tests/
-        
     - name: Stop and remove container
       if: always()
       run: docker rm -f tender-docxtemplate-app
@@ -72,7 +74,14 @@ jobs:
       run: |
         echo "The JOB_No is ${{ github.run_number }}"
         echo "GitHub Actions is not allowed to push commits to the repo, so we can't do it here now."
-        echo "repo_owner is ${{ github.repository_owner }}"
-        echo "env_repo is ${{ env.REPO }}"
-        echo "git_token is ${{ secrets.GITHUB_TOKEN }}"
+        # Nextstep to push
+        # git config --global user.name "svtechnmaa"
+        # git config --global user.email "nmaa@svtech.com.vn"
+        # git clone -b feature/streamlit https://github.com/svtechnmaa/charts.git --depth=1 --single-branch
+        # cd charts/
+        # sed -i '/^  repository: svtechnmaa\/tender_document_generator/{N;s/  tag: .*/  tag: '"v1.${{ github.run_number }}"'/}' kubernetes/docxtemplate/values.yaml
+        # git add .
+        # git commit -m "no-ci: Update docxtemplate image version"
+        # git remote set-url origin https://svtechnmaa:${{ secrets.GITHUB_TOKEN }}@github.com/svtechnmaa/charts.git
+        # git push origin feature/streamlit
     
