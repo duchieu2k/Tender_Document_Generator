@@ -4,13 +4,13 @@ services:
     image: tender_document
     build:
       context: ./
+      args:
+        GIT_TOKEN: secrets.GITHUB_TOKEN
+        CACHEBUST: (date +%s)
+        BRANCH: main
+        OWNER: github.repository_owner
       dockerfile: Dockerfile
     container_name: tender-docxtemplate-app
-    args:
-      GIT_TOKEN: secrets.GITHUB_TOKEN
-      CACHEBUST: (date +%s)
-      BRANCH: main
-      OWNER: github.repository_owner
     ports:
       - 8503:8503
     restart: always
