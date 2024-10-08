@@ -26,7 +26,11 @@ jobs:
         key: ${{ runner.os }}-buildx-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-buildx-
-      
+    - name: Run docker-compose
+      uses: hoverkraft-tech/compose-action@v2.0.1
+      with:
+        compose-file: "../../docker-compose.yml"
+
     - name: Run docker-compose
       run: docker-compose up -d
 
