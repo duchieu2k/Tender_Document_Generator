@@ -13,10 +13,9 @@ ARG BRANCH="main"
 ARG OWNER="kiennkt"
 
 # Update and install necessary packages
-RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends libc6-dev make dpkg-dev git openssh-client \
-    && apt-get clean all \
-    && rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
+RUN apk update \
+    && apk add --no-cache libc-dev make dpkg git openssh \
+    && rm -rf /var/cache/apk/*
 
 # Clone the repository
 RUN /usr/bin/git clone --branch $BRANCH https://$git_token@github.com/$OWNER/Tender_Document_Generator.git /app
