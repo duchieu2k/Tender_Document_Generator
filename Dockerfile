@@ -50,7 +50,7 @@ EXPOSE 8503
 # Command to run Streamlit
 ENTRYPOINT ["streamlit", "run", "streamlit_mainpage.py", "--server.port=8503", "--server.baseUrlPath=/docxtemplate/", "--server.address=0.0.0.0"]
 
-# docker build --build-arg git_token --build-arg CACHEBUST=$(date +%s) --build-arg BRANCH=main --build-arg OWNER=kiennkt -t tender:v1 .
+# docker build --build-arg git_token=something --build-arg CACHEBUST=$(date +%s) --build-arg BRANCH=main --build-arg OWNER=kiennkt -t tender:v1 .
 
 # or
 
