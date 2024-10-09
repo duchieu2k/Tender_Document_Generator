@@ -1,5 +1,5 @@
 ## build stage ##
-FROM python:3.13-alpine3.19 as build
+FROM python:3.13-slim as build
 
 # Set the working directory
 WORKDIR /app
@@ -13,15 +13,16 @@ ARG BRANCH="main"
 ARG OWNER="kiennkt"
 
 # Update and install necessary packages
-RUN apk update \
-    && apk add --no-cache libc-dev make dpkg git openssh \
-    && rm -rf /var/cache/apk/*
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends libc6-dev make dpkg-dev git openssh-client \
+    && apt-get clean all \
+    && rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
 
 # Clone the repository
 RUN /usr/bin/git clone --branch $BRANCH https://$git_token@github.com/$OWNER/Tender_Document_Generator.git /app
 
 ## run stage ##
-FROM python:3.13-alpine3.19
+FROM python:3.13-slim
 
 ENV OUTPUT_DIR="/opt/Tender_Document_Generator/output" \
     DB_DIR="/opt/Tender_Document_Generator/data" \
