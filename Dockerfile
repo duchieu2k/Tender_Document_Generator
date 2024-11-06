@@ -51,7 +51,5 @@ EXPOSE 8503
 ENTRYPOINT ["streamlit", "run", "streamlit_mainpage.py", "--server.port=8503", "--server.baseUrlPath=/docxtemplate/", "--server.address=0.0.0.0"]
 
 # docker build --build-arg git_token=something --build-arg CACHEBUST=$(date +%s) --build-arg BRANCH=main --build-arg OWNER=kiennkt -t tender:v1 .
-
 # or
-
 # docker build --build-arg git_token=your_git_token --build-arg BRANCH=main --no-cache -t your_image_name .
