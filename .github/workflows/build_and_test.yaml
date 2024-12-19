@@ -10,7 +10,7 @@ on:
 
 jobs:
   build_run_test:
-    runs-on: self-hosted, build_image
+    runs-on: [self-hosted, build_image]
     # permissions:
     #   contents: read
     #   packages: write
