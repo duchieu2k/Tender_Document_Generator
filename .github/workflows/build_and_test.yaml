@@ -26,15 +26,15 @@ jobs:
     #     key: ${{ runner.os }}-buildx-${{ github.sha }}
     #     restore-keys: |
     #       ${{ runner.os }}-buildx-
-    - name: Build Docker image
-      run: docker build --build-arg git_token=${{ secrets.GITHUB_TOKEN }} --build-arg CACHEBUST=$(date +%s) --build-arg BRANCH=main --build-arg OWNER=${{ github.repository_owner }} -t tender-docxtemplate-app .
-    - name: Run Tender app
-      run: |
-        # docker run -d --name tender-docxtemplate-app -p 8503:8503 hiennnnguyen/docxtemplate:version3
-        docker run -d --name tender-docxtemplate-app -p 8503:8503 tender-docxtemplate-app
-        sleep 10  # Give the container some time to start
-    - name: Check container status
-      run: docker inspect tender-docxtemplate-app
+    # - name: Build Docker image
+    #   run: docker build --build-arg git_token=${{ secrets.GITHUB_TOKEN }} --build-arg CACHEBUST=$(date +%s) --build-arg BRANCH=main --build-arg OWNER=${{ github.repository_owner }} -t tender-docxtemplate-app .
+    # - name: Run Tender app
+    #   run: |
+    #     # docker run -d --name tender-docxtemplate-app -p 8503:8503 hiennnnguyen/docxtemplate:version3
+    #     docker run -d --name tender-docxtemplate-app -p 8503:8503 tender-docxtemplate-app
+    #     sleep 10  # Give the container some time to start
+    # - name: Check container status
+    #   run: docker inspect tender-docxtemplate-app
 
     - name: Run Robot Framework tests
       run: |
