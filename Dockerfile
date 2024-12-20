@@ -1,5 +1,5 @@
 ## build stage ##
-FROM python:3.10.12-slim as build
+FROM python:3.10.12-slim-buster as build
 
 # Set the working directory
 WORKDIR /app
@@ -22,7 +22,7 @@ RUN apt-get update -y \
 RUN /usr/bin/git clone --branch $BRANCH https://$git_token@github.com/$OWNER/Tender_Document_Generator.git /app
 
 ## run stage ##
-FROM python:3.10.12-slim
+FROM python:3.10.12-slim-buster
 
 ENV OUTPUT_DIR="/opt/Tender_Document_Generator/output" \
     DB_DIR="/opt/Tender_Document_Generator/data" \
