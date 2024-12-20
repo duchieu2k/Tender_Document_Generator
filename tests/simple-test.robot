@@ -11,7 +11,7 @@ Library  SeleniumLibrary
 Library  Process
 
 *** Variables ***
-#${URL}             http://10.98.12.25:8503/docxtemplate
+#${URL}             http://10.98.7.10:8503/docxtemplate
 ${URL}             http://127.0.0.1:8503/docxtemplate
 ${BROWSER}         headlesschrome
 
