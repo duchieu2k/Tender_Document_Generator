@@ -5,6 +5,14 @@
 # unzip chromedriver-linux64.zip
 # cp app/chromedriver-linux64/chromedriver /usr/local/bin/
 
+# wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_131.0.6778.204-1_amd64.deb
+# sudo apt install -y /tmp/chrome.deb
+# sudo rm /tmp/chrome.deb
+# wget https://chromedriver.storage.googleapis.com/131.0.6778.204/chromedriver_linux64.zip
+# unzip chromedriver_linux64.zip
+# sudo cp chromedriver /usr/local/bin/
+# rm chromedriver_linux64.zip
+
 
 *** Settings ***
 Library  SeleniumLibrary
