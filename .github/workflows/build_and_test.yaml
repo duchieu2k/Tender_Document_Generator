@@ -1,4 +1,5 @@
 name: Build and Test Tender Document Generator
+
 on:
   push:
     branches:
@@ -49,7 +50,7 @@ jobs:
         docker push ghcr.io/${{ env.REPO }}:v1.${{ github.run_number }}
         docker push ghcr.io/${{ env.REPO }}:latest
 
-        
+
   Update_helm_chart:
     runs-on: docxtemplate-runners-set
     needs: build_run_test
