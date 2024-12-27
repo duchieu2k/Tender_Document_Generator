@@ -7,14 +7,12 @@ on:
   pull_request:
     branches:
       - main
-permissions:
-  contents: write
-  
+
 jobs:
   build_run_test:
     runs-on: docxtemplate-runner-set
     permissions:
-      contents: read
+      contents: write
       packages: write
     steps:
     - name: Checkout code
