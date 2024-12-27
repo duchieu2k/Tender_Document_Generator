@@ -70,7 +70,7 @@ jobs:
 
     - name: Update image version in helm chart
       run: |
-        sed -i '/^  repository: svtechnmaa\/tender_document_generator/{N;s/  tag: .*/  tag: '"v1.$JOB_No"'/}' chart/docxtemplate/values.yaml
+        sed -i '/^  repository: svtechnmaa\/tender_document_generator/{N;s/  tag: .*/  tag: '"v1.${{ github.run_number }}"'/}' chart/docxtemplate/values.yaml
         git config --global user.name "duchieu2k"
         git config --global user.email "hieu.nd@svtech.com.vn"
         git add .
